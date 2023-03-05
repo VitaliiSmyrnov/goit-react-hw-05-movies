@@ -7,7 +7,7 @@ const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
   const [status, setStatus] = useState('idle');
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); // eslint-disable-line
 
   useEffect(() => {
     const controller = new AbortController();
@@ -33,7 +33,6 @@ const Reviews = () => {
     };
   }, [movieId]);
 
-  console.log(error);
   return (
     <Wrapper>
       {status === 'pending' && <p>Loading subpage...</p>}

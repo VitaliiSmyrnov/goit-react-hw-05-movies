@@ -9,7 +9,7 @@ const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
   const [status, setStatus] = useState('idle');
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); // eslint-disable-line
 
   useEffect(() => {
     const controller = new AbortController();
@@ -35,7 +35,6 @@ const Cast = () => {
     };
   }, [movieId]);
 
-  console.log(error);
   return (
     <Wrapper>
       {status === 'pending' && <p>Loading subpage...</p>}
