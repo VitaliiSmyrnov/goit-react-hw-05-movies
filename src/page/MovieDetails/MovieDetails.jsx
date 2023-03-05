@@ -11,7 +11,7 @@ export const MovieDetails = () => {
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState(null);
   const location = useLocation();
-  const [from, setFrom] = useState(location.state?.from ?? { pathname: '/' });
+  const [from] = useState(location.state?.from ?? { pathname: '/' });
 
   useEffect(() => {
     const controller = new AbortController();
