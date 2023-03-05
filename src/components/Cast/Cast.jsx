@@ -35,6 +35,7 @@ const Cast = () => {
     };
   }, [movieId]);
 
+  console.log(error);
   return (
     <Wrapper>
       {status === 'pending' && <p>Loading subpage...</p>}
