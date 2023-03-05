@@ -1,15 +1,17 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Message } from 'components';
 import { fetchMovieCast } from 'services/Api';
 import { getSortedCast } from 'utils/getSortedCast';
 import { Wrapper } from './Cast.styled';
 import NoPhoto from 'assets/no-photo.jpg';
+import MovieApiError from 'assets/something-wrong-min.png';
 
 const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
   const [status, setStatus] = useState('idle');
-  const [error, setError] = useState(null); // eslint-disable-line
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -24,7 +26,9 @@ const Cast = () => {
         setStatus('resolved');
       } catch (error) {
         if (error.name !== 'CanceledError') {
-          setError(error.message);
+          setError(
+            'Oops, something went wrong. Please, reload the subpage to try again.'
+          );
           setStatus('rejected');
         }
       }
@@ -58,11 +62,7 @@ const Cast = () => {
         <p>We don't have any cast for this movie</p>
       )}
 
-      {status === 'rejected' && (
-        <p>
-          Oops, something went wrong. Please, reload the subpage to try again.
-        </p>
-      )}
+      {status === 'rejected' && <Message text={error} image={MovieApiError} />}
     </Wrapper>
   );
 };
