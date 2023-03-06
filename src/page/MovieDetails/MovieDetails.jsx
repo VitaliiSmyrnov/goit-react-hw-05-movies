@@ -64,6 +64,7 @@ export const MovieDetails = () => {
           <Message text={error} image={MovieApiError} />
         )}
       </Wrapper>
+
       <Suspense>
         <Outlet />
       </Suspense>
