@@ -2,7 +2,6 @@ import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { List, LinkStyled, Info, Title, Rating } from './MovieList.styled';
 import NoPoster from 'assets/no-poster.jpg';
-
 export function MovieList({ items = [] }) {
   const location = useLocation();
 
